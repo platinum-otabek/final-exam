@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend-something-duplicate
+  name: frontend-something-duplicate
+  namespace: otabek
+spec:
+
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-something-duplicate
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: frontend-something-duplicate
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: final
+                    operator: In
+                    values:
+                      - exam
+
+      containers:
+      - image: nvrbckdown/something
+        name: something
+        livenessProbe:
+          tcpSocket:
+            port: 80
+        resources: {}
+status: {}

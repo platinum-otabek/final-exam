@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+  namespace: otabek
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+        - name: echo
+          image: busybox
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - 'echo "My name is $AUTHOR and this is my $EXAM_TYPE"; sleep 10'
+          env:
+            - name: AUTHOR
+              valueFrom:
+                configMapKeyRef:
+                  name: config-info
+                  key: AUTHOR
+            - name: EXAM_TYPE
+              valueFrom:
+                configMapKeyRef:
+                  name: config-info
+                  key: EXAM_TYPE
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}

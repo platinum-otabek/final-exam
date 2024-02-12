@@ -1,0 +1,8 @@
+kubectl logs busybox-echo -n otabek
+The BEST DevOps COURSE
+
+kubectl get pods -n otabek
+NAME           READY   STATUS      RESTARTS      AGE
+busybox-echo   0/1     Completed   5 (96s ago)   3m7s
+nginx1         1/1     Running     0             17m
+nginx2         1/1     Running     0             17m

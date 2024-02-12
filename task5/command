@@ -1,0 +1,1 @@
+kubectl logs nginx-7459d9f555-q9f2g -n otabek -c echo

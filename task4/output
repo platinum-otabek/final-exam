@@ -1,0 +1,5 @@
+NAME                                 READY   STATUS             RESTARTS        AGE
+flask-application-6b6d5bdf59-48s6q   1/1     Running            0               41s
+flask-application-6b6d5bdf59-dvg66   1/1     Running            0               41s
+nginx1                               1/1     Running            0               23m
+nginx2                               1/1     Running            0               23m

@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: final-exam
+  namespace: otabek
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: otabek.nvrbckdown.uz
+    http:
+      paths:
+      - backend:
+          service:
+            name: final-exam
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer: {}

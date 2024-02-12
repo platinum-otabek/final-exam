@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: final-exam
+  name: final-exam
+  namespace: otabek
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: final-exam
+  type: NodePort
+status:
+  loadBalancer: {}
